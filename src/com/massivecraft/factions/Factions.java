@@ -1,7 +1,5 @@
 package com.massivecraft.factions;
 
-import org.bukkit.ChatColor;
-
 import com.massivecraft.factions.adapter.BoardAdapter;
 import com.massivecraft.factions.adapter.BoardMapAdapter;
 import com.massivecraft.factions.adapter.FactionPreprocessAdapter;
@@ -13,28 +11,35 @@ import com.massivecraft.factions.chat.modifier.ChatModifierParse;
 import com.massivecraft.factions.chat.modifier.ChatModifierRp;
 import com.massivecraft.factions.chat.modifier.ChatModifierUc;
 import com.massivecraft.factions.chat.modifier.ChatModifierUcf;
+import com.massivecraft.factions.chat.tag.ChatTagName;
+import com.massivecraft.factions.chat.tag.ChatTagNameforce;
 import com.massivecraft.factions.chat.tag.ChatTagRelcolor;
 import com.massivecraft.factions.chat.tag.ChatTagRole;
 import com.massivecraft.factions.chat.tag.ChatTagRoleprefix;
-import com.massivecraft.factions.chat.tag.ChatTagName;
-import com.massivecraft.factions.chat.tag.ChatTagNameforce;
 import com.massivecraft.factions.chat.tag.ChatTagRoleprefixforce;
 import com.massivecraft.factions.chat.tag.ChatTagTitle;
-import com.massivecraft.factions.cmd.*;
+import com.massivecraft.factions.cmd.CmdFactions;
 import com.massivecraft.factions.engine.EngineChat;
 import com.massivecraft.factions.engine.EngineCombat;
+import com.massivecraft.factions.engine.EngineCommands;
 import com.massivecraft.factions.engine.EngineEcon;
 import com.massivecraft.factions.engine.EngineExploit;
+import com.massivecraft.factions.engine.EngineFlag;
 import com.massivecraft.factions.engine.EngineMain;
+import com.massivecraft.factions.engine.EngineMotd;
+import com.massivecraft.factions.engine.EngineMoveChunk;
+import com.massivecraft.factions.engine.EnginePerm;
 import com.massivecraft.factions.engine.EngineSeeChunk;
+import com.massivecraft.factions.engine.EngineShow;
+import com.massivecraft.factions.engine.EngineTeleport;
 import com.massivecraft.factions.entity.Board;
 import com.massivecraft.factions.entity.BoardColl;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.entity.MConfColl;
 import com.massivecraft.factions.entity.MFlagColl;
 import com.massivecraft.factions.entity.MPermColl;
 import com.massivecraft.factions.entity.MPlayerColl;
-import com.massivecraft.factions.entity.MConfColl;
 import com.massivecraft.factions.integration.V19.IntegrationV19;
 import com.massivecraft.factions.integration.herochat.IntegrationHerochat;
 import com.massivecraft.factions.integration.lwc.IntegrationLwc;
@@ -42,9 +47,9 @@ import com.massivecraft.factions.integration.spigot.IntegrationSpigot;
 import com.massivecraft.factions.integration.worldguard.IntegrationWorldGuard;
 import com.massivecraft.factions.mixin.PowerMixin;
 import com.massivecraft.factions.mixin.PowerMixinDefault;
+import com.massivecraft.factions.task.TaskEconLandReward;
 import com.massivecraft.factions.task.TaskFlagPermCreate;
 import com.massivecraft.factions.task.TaskPlayerDataRemove;
-import com.massivecraft.factions.task.TaskEconLandReward;
 import com.massivecraft.factions.task.TaskPlayerPowerUpdate;
 import com.massivecraft.factions.update.UpdateUtil;
 import com.massivecraft.massivecore.Aspect;
@@ -54,6 +59,7 @@ import com.massivecraft.massivecore.Multiverse;
 import com.massivecraft.massivecore.util.MUtil;
 import com.massivecraft.massivecore.xlib.gson.Gson;
 import com.massivecraft.massivecore.xlib.gson.GsonBuilder;
+import org.bukkit.ChatColor;
 
 public class Factions extends MassivePlugin
 {
@@ -152,8 +158,15 @@ public class Factions extends MassivePlugin
 			EngineMain.class,
 			EngineChat.class,
 			EngineCombat.class,
+			EngineCommands.class,
 			EngineExploit.class,
+			EngineFlag.class,
+			EngineMotd.class,
+			EngineMoveChunk.class,
+			EnginePerm.class,
 			EngineSeeChunk.class,
+			EngineShow.class,
+			EngineTeleport.class,
 			EngineEcon.class, // TODO: Take an extra look and make sure all economy stuff is handled using events. 
 			
 			// Integrate

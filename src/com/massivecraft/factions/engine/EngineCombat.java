@@ -1,7 +1,15 @@
 package com.massivecraft.factions.engine;
 
-import java.text.MessageFormat;
-
+import com.massivecraft.factions.Rel;
+import com.massivecraft.factions.entity.BoardColl;
+import com.massivecraft.factions.entity.Faction;
+import com.massivecraft.factions.entity.MConf;
+import com.massivecraft.factions.entity.MFlag;
+import com.massivecraft.factions.entity.MPlayer;
+import com.massivecraft.factions.event.EventFactionsPvpDisallowed;
+import com.massivecraft.massivecore.Engine;
+import com.massivecraft.massivecore.ps.PS;
+import com.massivecraft.massivecore.util.MUtil;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -14,16 +22,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.projectiles.ProjectileSource;
 
-import com.massivecraft.factions.Rel;
-import com.massivecraft.factions.entity.BoardColl;
-import com.massivecraft.factions.entity.Faction;
-import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.entity.MFlag;
-import com.massivecraft.factions.entity.MPlayer;
-import com.massivecraft.factions.event.EventFactionsPvpDisallowed;
-import com.massivecraft.massivecore.Engine;
-import com.massivecraft.massivecore.ps.PS;
-import com.massivecraft.massivecore.util.MUtil;
+import java.text.MessageFormat;
 
 public class EngineCombat extends Engine
 {
