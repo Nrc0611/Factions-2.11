@@ -1,21 +1,21 @@
 package com.massivecraft.factions.cmd;
 
+import org.bukkit.ChatColor;
+
+import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.cmd.req.ReqBankCommandsEnabled;
 import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.cmd.type.TypeMPlayer;
-import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.MConf;
-import com.massivecraft.factions.Factions;
+import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.factions.integration.Econ;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.RequirementHasPerm;
 import com.massivecraft.massivecore.command.type.primitive.TypeDouble;
 import com.massivecraft.massivecore.money.Money;
 import com.massivecraft.massivecore.util.Txt;
-
-import org.bukkit.ChatColor;
 
 
 public class CmdFactionsMoneyTransferFp extends FactionsCommand
@@ -28,6 +28,7 @@ public class CmdFactionsMoneyTransferFp extends FactionsCommand
 	{
 		// Aliases
 		this.addAliases("fp");
+		this.setSettingUpStandard(false);
 
 		// Parameters
 		this.addParameter(TypeDouble.get(), "amount");

@@ -32,6 +32,7 @@ public class CmdFactionsSetAuto extends FactionsCommand
 	{
 		// Fields
 		this.setClaim(claim);
+		this.setSettingUpStandard(false);
 		
 		// Aliases
 		this.addAliases("auto");
